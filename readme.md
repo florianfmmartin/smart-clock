@@ -1,1 +1,1 @@
-# All Flo's Janet Code
+# Smart clock
