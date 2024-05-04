@@ -20,7 +20,6 @@
 
 (defn show []
  (let [weather (get-weather)]
-  (pp weather)
   (show-today
    (math/round (get-in weather [:current :temperature_2m]))
    (math/round (get-in weather [:current :apparent_temperature]))

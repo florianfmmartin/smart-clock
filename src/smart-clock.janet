@@ -23,8 +23,8 @@
    [:div (weather/show)]]))
 
 (defn start []
- (-> (httpf/server)
+ (-> (httpf/server )
      httpf/add-bindings-as-routes
-     httpf/listen))
+     (httpf/listen "192.168.0.28" 8080)))
 
 (start)
