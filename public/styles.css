@@ -1,0 +1,56 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: #FCF6DD;
+  color: #3D0B37;
+  margin: 2rem;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.today {
+  display: flex;
+  flex-flow: column;
+  margin: 1rem;
+}
+
+.today .main {
+  display: flex;
+  flex-flow: row;
+  font-size: 34px;
+  align-items: center;
+}
+
+.today .main img {
+  height: 124px;
+  width: 124px;
+}
+
+.today .second {
+  font-size: 20px;
+}
+
