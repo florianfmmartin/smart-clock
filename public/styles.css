@@ -29,28 +29,36 @@ body {
 }
 
 h1 {
+  font-size: 40px;
+}
+
+h2 {
   font-size: 36px;
 }
 
-.today {
+.block {
+  background-color: #012622;
+  color: #fcf6dd;
   display: flex;
   flex-flow: column;
-  margin: 1rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
 }
 
-.today .main {
+.block .main {
   display: flex;
   flex-flow: row;
   font-size: 34px;
   align-items: center;
 }
 
-.today .main img {
+.block .main img {
   height: 124px;
   width: 124px;
 }
 
-.today .second {
+.block .second {
   font-size: 20px;
 }
 
