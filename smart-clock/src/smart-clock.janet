@@ -1,6 +1,7 @@
 (import spork/httpf)
 (import spork/htmlgen)
 (import ./weather)
+(import ../../home-dashboard/config :as :dashboard)
 
 (defn base-html [body]
  [:html {:lang "en"}
@@ -35,6 +36,6 @@
 (defn start []
  (-> (httpf/server)
      httpf/add-bindings-as-routes
-     (httpf/listen "192.168.0.28" 8080)))
+     (httpf/listen dashboard/local-ip (dashboard/port-map :smart-clock))))
 
 (start)
