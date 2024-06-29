@@ -28,7 +28,7 @@
 (defn home {:path "/"} [&]
  (base-html
   [:div
-   [:h1 "Bonjour Florian & Catherine 😊"]
+   [:h1 "Bonjour Flo & Cat 😊"]
    [:div @{:class "block-container"}
     (show-time)
     ;(weather/show)]]))
