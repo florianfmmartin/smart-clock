@@ -2,9 +2,7 @@
 
 (def services [:dashboard :smart-clock])
 
-(def ip-addr-output @"")
-
-($ ip addr | grep 192.168 >,ip-addr-output)
+(def ip-addr-output ($< ip addr | grep 192.168))
 
 (def local-ip
  (get

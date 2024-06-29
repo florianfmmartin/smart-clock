@@ -33,9 +33,9 @@
     (show-time)
     ;(weather/show)]]))
 
-(defn start []
+(defn start-service []
  (-> (httpf/server)
      httpf/add-bindings-as-routes
      (httpf/listen dashboard/local-ip (dashboard/port-map :smart-clock))))
 
-(start)
+(start-service)
