@@ -14,6 +14,7 @@
    [:link {:rel "preconnect" :href "https://fonts.gstatic.com" :crossorigin true}]
    [:link {:href "https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" :rel "stylesheet"}]
    [:script @{:src "https://unpkg.com/petite-vue" :defer true :init true}]
+   [:script @{:type "module" :src "https://md-block.verou.me/md-block.js"}]
    [:script (htmlgen/raw  "setTimeout(() => window.location.reload(), 1000 * 60 * 15)")]
    [:script (htmlgen/raw "const upTime = () => { const el = document.getElementById('ze-time'); const date = new Date(); el.innerText = `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`; setTimeout(upTime, 1000); }; setTimeout(upTime, 5000);")]
    [:script (htmlgen/raw "const upWelcome = () => { const el = document.getElementById('ze-welcome'); const date = new Date(); if (date.getHours() >= 22 || date.getHours() < 7) { el.innerText = 'Bonne nuit Flo & Cat 😴' } else if (date.getHours() >= 17) { el.innerText = 'Bonsoir Flo & Cat 😊' } else { el.innerText = 'Bonjour Flo & Cat 😎'}; setTimeout(upWelcome, 1000); }; setTimeout(upWelcome, 1000 * 60 * 5);")]

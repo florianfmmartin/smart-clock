@@ -13,15 +13,15 @@ html {
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+ol {
+  padding-left: 64px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   margin-bottom: 1rem;
   padding: 0;
   font-weight: normal;
-}
-
-ol, ul {
-  list-style: none;
 }
 
 img {
@@ -95,6 +95,8 @@ h2 {
 
 .block.note {
   font-size: 32px;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .block.note .buttons {
