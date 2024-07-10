@@ -2,6 +2,7 @@
 (import spork/htmlgen)
 (import ./weather)
 (import ../../home-dashboard/config :as :dashboard)
+(import ./note)
 
 (defn base-html [body]
  [:html {:lang "en"}
@@ -12,12 +13,13 @@
    [:link {:rel "preconnect" :href "https://fonts.googleapis.com"}]
    [:link {:rel "preconnect" :href "https://fonts.gstatic.com" :crossorigin true}]
    [:link {:href "https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" :rel "stylesheet"}]
+   [:script @{:src "https://unpkg.com/petite-vue" :defer true :init true}]
    [:script (htmlgen/raw  "setTimeout(() => window.location.reload(), 1000 * 60 * 15)")]
-   [:script (htmlgen/raw "const upTime = () => { console.log('Update time'); const el = document.getElementById('ze-time'); const date = new Date(); el.innerText = `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`; setTimeout(upTime, 5000); }; setTimeout(upTime, 5000);")]
-   [:script (htmlgen/raw "const upWelcome = () => { console.log('Update welcome'); const el = document.getElementById('ze-welcome'); const date = new Date(); if (date.getHours() >= 22 || date.getHours() < 7) { el.innerText = 'Bonne nuit Flo & Cat 😴' } else if (date.getHours() >= 17) { el.innerText = 'Bonsoir Flo & Cat 😊' } else { el.innerText = 'Bonjour Flo & Cat 😎'}; setTimeout(upWelcome, 5000); }; setTimeout(upWelcome, 5000);")]
+   [:script (htmlgen/raw "const upTime = () => { const el = document.getElementById('ze-time'); const date = new Date(); el.innerText = `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`; setTimeout(upTime, 1000); }; setTimeout(upTime, 5000);")]
+   [:script (htmlgen/raw "const upWelcome = () => { const el = document.getElementById('ze-welcome'); const date = new Date(); if (date.getHours() >= 22 || date.getHours() < 7) { el.innerText = 'Bonne nuit Flo & Cat 😴' } else if (date.getHours() >= 17) { el.innerText = 'Bonsoir Flo & Cat 😊' } else { el.innerText = 'Bonjour Flo & Cat 😎'}; setTimeout(upWelcome, 1000); }; setTimeout(upWelcome, 1000 * 60 * 5);")]
    [:link @{:rel "stylesheet" :type "text/css" :href "styles.css"}]
   [:body
-   [:div body]]])
+   [:div @{"v-scope" true} body]]])
 
 (defn styles-css {:path "/styles.css" :render-mime "text/css"} [&]
  (slurp "./public/styles.css"))
@@ -32,7 +34,14 @@
    [:h1 @{:id "ze-welcome"} "Bonjour Flo & Cat 😊"]
    [:div @{:class "block-container"}
     (show-time)
-    ;(weather/show)]]))
+    ;(weather/show)
+    (note/show)]]))
+
+(defn get-note {:path "/note"} [&]
+ (note/read-save-file))
+
+(defn update-note {:path "/note/update"} [req data]
+ (note/write-save-file data))
 
 (defn start-service []
  (-> (httpf/server)
